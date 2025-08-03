@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&display=swap')
+
+// Fonts
+@font-face 
+  font-family: surahCustomFont
+  src: url("assets/fonts/surah_names.woff2")
+
+.bodoni-moda
+  font-family: "Bodoni Moda", serif
+  font-optical-sizing: auto
+  font-weight: 3
+  font-style: normal
+
+// Base styles
+html
+  scroll-behavior: smooth
+  overflow-x: hide 
+
+*
+  margin: 0
+  padding: 0
+  transition: 400ms ease-in-out
+
+.title
+  img
+    width: 28rem
+    aspect-ratio: 1
+    //position: relative
+    //z-index: 3    
+    border-image: 0 fill radial-gradient(circle,rgba(255, 255, 255, 0.25) 0%, rgba(0, 0, 0) 70%)
+
+.anchor
+  position: relative
+  z-index: 3
+
+// Keyframes
+@keyframes move-twink-back
+  from 
+    background-position: 0 0
+  to 
+    background-position: -10000px 5000px
+
+// Background stars and twinkling
+.stars, .twinkling
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  width: 100%
+  height: 100%
+  display: block
+
+.stars
+  background: #000 url(assets/stars.png) repeat top center
+  z-index: 0
+
+.twinkling
+  background: transparent url(assets/twinkling.png) repeat top center
+  z-index: 1
+  animation: move-twink-back 500s linear infinite
+  height: 100%
+
+// Main layout
+main
+  display: flex
+  align-items: center
+  //justify-content: center
+  flex-direction: column
+  width: 100vw
+  height: 100vh
+
+  .backButton
+    z-index: 10
+    //border: 1px solid white
+    position: fixed
+    top: 92%
+    left: 92%
+    max-width: fit-content
+    max-height: fit-content
+    transform: rotate(-90deg) translateX(-200px)
+    scale: 1.5
+    //visibility: hidden
+    transition: 400ms ease-in-out
+
+    svg
+      filter: invert(66%) sepia(0%) saturate(61%) hue-rotate(152deg) brightness(103%) contrast(93%)
+      transition: 400ms ease-in-out
+      border-radius: 1vmax
+      //background-color: black
+
+  .backButton:hover
+    cursor: pointer
+    scale: 2
+    svg
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(133deg) brightness(101%) contrast(102%)
+      transform: rotate(360deg)
+
+  section
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100vw
+    height: 85vh
+
+  footer
+    color: white
+    font-size: 1rem
+    z-index: 3
+    text-align: left
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    width: 100vw
+    
+    .read
+      div
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: column
+        gap: 2vh
+      h5
+        font-family: "Bodoni Moda", serif
+        color: #696969
+        transition: 500ms ease-in-out
+      svg
+        filter: invert(42%) sepia(1%) saturate(0%) hue-rotate(145deg) brightness(95%) contrast(86%)
+        //wdith: 5px
+        aspect-ratio: 1   
+        position: absolute
+        transition: 500ms ease-in-out
+      svg:nth-child(1)
+        rotate: 90deg
+        transition: 500ms ease-in-out
+      svg:nth-child(2)
+        rotate: 180deg
+        transition: 500ms ease-in-out
+      svg:nth-child(3)
+        rotate: 270deg
+        transition: 500ms ease-in-out
+      svg:nth-child(4)
+        transition: 500ms ease-in-out
+      .svgWrapper
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: column    
+      div:hover
+        transition: 8s ease-in-out
+        cursor: pointer
+        svg
+          filter: none
+        h5
+          color: #FFF
+        svg:nth-child(1)
+          rotate: 180deg
+        svg:nth-child(2)
+          rotate: -180deg
+        svg:nth-child(3)
+          rotate: -180deg
+        svg:nth-child(4)
+          rotate: 180deg
+
+// Surah container
+.surahContainer
+  width: 100vw
+  height: 100vh 
+  background: #000 url(assets/stars.png) repeat top center
+  display: flex
+  align-items: center
+  flex-direction: column
+
+  .insideWrapper
+    position: relative
+    z-index: 5
+  header
+    width: 100vw
+    height: 18vh
+    display: flex
+    align-items: center
+    justify-content: center
+    svg
+      scale: 0.7
+      .path
+        stroke-dasharray: 1000
+        stroke-dashoffset: 1000
+        //animation: dash 5s linear forwards
+  .main
+    width: 94vw
+    height: 75vh
+    border-radius: 2rem 2rem 0 0
+    background-color:#030303
+    margin: 0 2vw 0 2vw
+    //border-image: linear-gradient(#FFF, #000) 
+    border: 1px white solid
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 3vmax 1vmax 3vmax 1vmax
+    min-width: 0
+    flex-wrap: wrap
+    gap: 3vmax
+    overflow-y: auto
+    .surahAllContainer
+      color: white
+      border: 2px solid #b4b4b4
+      border-radius: 1vmin
+      padding: 1vmax
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-direction: column
+      text-align: center
+      transition: 250ms ease-in-out
+      .surahBottomContainer
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: center
+        gap: 1vmax
+    .surahAllContainer:hover
+      border: white
+      background-color: white
+      color: black
+      scale: 1.15
+      cursor: pointer
+
+.surahArabicName
+  font-family: surahCustomFont
+
+a
+  text-decoration: none !important
+  color: none
+
+// Surah body
+body.surahBody
+  max-width: 100vw
+  height: 100vh
+  //height: fit-content
+  background: #000 url(assets/stars.png) repeat top center
+  margin: 0
+  padding: 0
+  display: flex
+  align-items: center
+  text-align: center
+  //color: white
+  min-width: 0   
+  flex-basis: content
+  word-wrap: break-word
+  flex-direction: column
+  //visibility: hidden
+  
+  h1
+    color: white
+
+  header
+    display: flex
+    align-items: center
+    justify-content: center
+  svg
+    scale: 0.7
+  *
+    margin: 0
+    padding: 0
+  .surahMain
+    position: relative
+    z-index: 3
+    color: #555
+    font-family: "Scheherazade New", serif
+    font-size: 2rem
+    display: flex
+    flex-direction: row
+    height: 100vh
+    max-width: 100vw
+    justify-content: center
+    text-align: center
+    
+    .ayahContainer
+      text-align: justify
+      text-justify: inter-word
+      float: right
+      display: flex
+      align-items: right
+      border-top: white solid 2px
+      padding-top: 4vmax
+      max-width: 100%
+    .mainContainer
+      padding: 4vmax 8vmax 4vmax 8vmax
+      display: flex
+      flex-direction: column
+      gap: 2vmax
+      max-width: fit-content
+      min-width: 0
+  span:hover
+    cursor: pointer
+  .hamburgerButton
+    margin-bottom: 2vmax
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    max-width: fit-content
+    div
+      margin: 0
+      padding: 0
+      height: 9px
+      transition: 200ms ease-in-out
+  .hamburgerButton:hover
+    cursor: pointer
+    color: white
+    div:nth-child(1)
+      transform: translateX(5px)
+    div:nth-child(2)
+      transform: translateX(10px)
+    div:nth-child(3)
+      transform: translateX(15px)
+  .sideBarContainer
+    display: none
+    overflow-y: scroll
+    overflow-x: hidden
+    text-align: left
+    padding-left: 1vmax
+    width: 0
+    position: fixed
+    height: 100vh
+    background-color: #000000F9
+    box-shadow: 3px 3px 10px #FFFFFF99
+    z-index: 5
+    flex-direction: column
+    p
+      height: 38px
+      transition: 250ms ease-in-out
+    p:hover
+      color: white
+      transform: translateX(20px)
+      cursor: pointer
+  .aboveContainer
+    display: flex
+    flex-direction: row
+    align-items: flex-start
+    min-height: fit-content
+    margin: 2vmax 0 0 0
+    gap: 2vmax
+    .closeButton
+      color: #ccc
+      transition: 250ms ease-in-out
+    .closeButton:hover
+      transform: rotate(180deg) scale(1.1)
+      color: #ff7979
+      cursor: pointer
+    div:nth-child(2)
+      transform: scale(1.4) translateY(-1px)
+      transition: 250ms ease-in-out
+    div:nth-child(2):hover
+      cursor: pointer
+      transform: scale(1.82) translateY(-5px)
+      color: #41fff9
+
+  
+  //.ayahStyle
+    //display: inline-flex !important
+    //flex-wrap: wrap
+    //text-align: justify
+    //text-justify: inter-word
+    //gap: 1vmax
+
+    //div
+    //  max-width: fit-content
+    //  min-width: fit-content
+      
+
+@media screen and (max-width: 720px)
+  body.surahBody      
+    svg
+      scale: 1
+
+@media screen and (max-width: 580px)
+  .title
+    img
+      width: 20rem
+  
+  .surahContainer
+    .main
+      display: block
+      overflow-x: hidden
+      overflow-y: auto
+      min-width: 0
+      text-align: center
+      .surahAllContainer
+        width: 80vw
+        flex-basis: 1  
+        margin: 0 auto 1vmax auto
+      .surahAllContainer:hover
+        scale: 1.09
+
+  body.surahBody
+    .mainContainer
+      padding: 4vmax !important
+      
+    svg
+      scale: 1.1
+
+  span
+    font-size:1.3rem
+
+    
+      
+
+@media screen and (max-width: 350px)
+  .title
+    img
+      width: 10rem

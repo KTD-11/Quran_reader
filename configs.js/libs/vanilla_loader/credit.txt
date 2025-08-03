@@ -1,0 +1,1 @@
+full credit goes to https://github.com/Matheus2212/js-simple-loader/blob/main/loader.js for the loader
